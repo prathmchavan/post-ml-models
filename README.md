@@ -16,9 +16,6 @@ http://localhost:8000/
 1. [Introduction](#-introduction)
 2. [API Endpoints](#-api-endpoints)
     - [GET /](#1-get-)
-    - [POST /predict/dnn](#2-post-predictdnn)
-    - [POST /predict/random-forest](#3-post-predictrandom-forest)
-    - [POST /predict/decision-tree](#4-post-predictdecision-tree)
     - [POST /predict/dnn-post](#5-post-predictdnn-post)
     - [POST /predict/random-forest-post](#6-post-predictrandom-forest-post)
     - [POST /predict/decision-tree-post](#7-post-predictdecision-tree-post)
@@ -32,11 +29,11 @@ http://localhost:8000/
 
 ## 🔥 **Introduction**
 This API service allows users to interact with pre-trained machine learning models and get predictions for various tasks. It exposes the following types of models:
-- **Random Forest** (pre/post)
-- **Decision Tree** (pre/post)
-- **Deep Neural Networks (DNN)** (pre/post)
+- **Random Forest** (post)
+- **Decision Tree** (post)
+- **Deep Neural Networks (DNN)** (post)
 
-> The models are pre-loaded from `.keras`, `.pkl`, and other model files at runtime.
+> The models are not pre-loaded from `.keras`, `.pkl`, and other model files at runtime.
 
 ---
 
@@ -59,89 +56,7 @@ GET /
 
 ---
 
-### 2️⃣ **POST /predict/dnn**
-> **Description:** Predicts using the **Deep Neural Network (DNN)** on the pre-trained dataset.
-
-**Request**  
-```
-POST /predict/dnn
-```
-
-**Request Body**
-```json
-{
-    "feature_vector": [value1, value2, value3, ..., valueN]
-}
-```
-
-**Response**
-```json
-{
-    "prediction": 1
-}
-```
-
-**Errors**
-- **422**: Validation error (when the feature vector is invalid)
-- **500**: Internal server error
-
----
-
-### 3️⃣ **POST /predict/random-forest**
-> **Description:** Predicts using the **Random Forest** model on the pre-trained dataset.
-
-**Request**  
-```
-POST /predict/random-forest
-```
-
-**Request Body**
-```json
-{
-    "feature_vector": [value1, value2, value3, ..., valueN]
-}
-```
-
-**Response**
-```json
-{
-    "prediction": 0
-}
-```
-
-**Errors**
-- **500**: Internal server error
-
----
-
-### 4️⃣ **POST /predict/decision-tree**
-> **Description:** Predicts using the **Decision Tree** model on the pre-trained dataset.
-
-**Request**  
-```
-POST /predict/decision-tree
-```
-
-**Request Body**
-```json
-{
-    "feature_vector": [value1, value2, value3, ..., valueN]
-}
-```
-
-**Response**
-```json
-{
-    "prediction": 1
-}
-```
-
-**Errors**
-- **500**: Internal server error
-
----
-
-### 5️⃣ **POST /predict/dnn-post**
+### 2 **POST /predict/dnn-post**
 > **Description:** Predicts using the **Deep Neural Network (DNN)** on the post-trained dataset.
 
 **Request**  
@@ -169,7 +84,7 @@ POST /predict/dnn-post
 
 ---
 
-### 6️⃣ **POST /predict/random-forest-post**
+### 3 **POST /predict/random-forest-post**
 > **Description:** Predicts using the **Random Forest** model on the post-trained dataset.
 
 **Request**  
@@ -196,7 +111,7 @@ POST /predict/random-forest-post
 
 ---
 
-### 7️⃣ **POST /predict/decision-tree-post**
+### 4 **POST /predict/decision-tree-post**
 > **Description:** Predicts using the **Decision Tree** model on the post-trained dataset.
 
 **Request**  
